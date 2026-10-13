@@ -1,0 +1,8 @@
+{
+  "name": "Aplikasi Permohonan Angkutan Kayu TPK Talok",
+  "description": "Aplikasi Permohonan Angkutan Kayu TPK Talok berbasis web untuk penginputan dokumen perizinan SKSHHK real-time dan integrasi penyimpanan cloud Google Drive & Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

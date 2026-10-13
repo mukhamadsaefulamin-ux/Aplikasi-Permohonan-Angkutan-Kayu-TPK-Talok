@@ -1,0 +1,351 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Paper document container styling (Ukuran Kertas Legal 215.9mm x 355.6mm / 8.5 x 14 inch) */
+.document-container {
+  width: 215.9mm;
+  min-height: 355.6mm;
+  margin: 20px auto;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  color-scheme: light !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 10mm 20mm 15mm 20mm;
+  position: relative;
+}
+
+.document-container-landscape {
+  width: 355.6mm;
+  min-height: 215.9mm;
+  margin: 20px auto;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  color-scheme: light !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 10mm 15mm 15mm 15mm;
+  position: relative;
+}
+
+.document-container *,
+.document-container-landscape * {
+  color-scheme: light !important;
+}
+
+/* Interactive inputs styled to look natural on official Perhutani paperwork */
+.paper-input {
+  border: none;
+  border-bottom: 1px dotted #374151;
+  background-color: transparent;
+  outline: none;
+  padding: 0 4px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #000000;
+  transition: all 0.15s ease-in-out;
+}
+
+.paper-input:focus {
+  border-bottom: 1.5px solid #059669;
+  background-color: #f0fdf4;
+  color: #000000;
+}
+
+.paper-input::placeholder {
+  font-weight: normal;
+  color: #9ca3af;
+  font-size: 0.85em;
+}
+
+.table-paper-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+  font-weight: 600;
+  color: #000000;
+  padding: 2px 0;
+}
+
+.table-paper-input:focus {
+  background-color: #ecfdf5;
+}
+
+/* Physical printer media styles for Legal Paper */
+@media print {
+  @page {
+    size: 215.9mm 355.6mm; /* Ukuran Kertas Legal Portrait (8.5 x 14 in) */
+    margin: 0;
+  }
+
+  body {
+    background-color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .document-container {
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    padding: 10mm 20mm 15mm 20mm !important;
+    width: 215.9mm !important;
+    min-height: 355mm !important;
+    page-break-inside: avoid;
+  }
+
+  .document-container-landscape {
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    padding: 10mm 15mm 15mm 15mm !important;
+    width: 355.6mm !important;
+    min-height: 215mm !important;
+    page-break-inside: avoid;
+  }
+
+  .pdf-page-break {
+    page-break-before: always !important;
+  }
+
+  input::-webkit-calendar-picker-indicator,
+  input::-webkit-list-button {
+    display: none !important;
+  }
+
+  .paper-input,
+  .table-paper-input {
+    border-bottom: 1px dotted #000 !important;
+    color: #000 !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: transparent !important;
+  }
+}
+
+/* Strict export mode for html2pdf bundle (Legal format) */
+body.pdf-mode {
+  background-color: #fff !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+body.pdf-mode #root {
+  width: auto !important;
+  display: block !important;
+}
+
+body.pdf-mode .no-print {
+  display: none !important;
+}
+
+body.pdf-mode #cetak-angkutan {
+  width: 215.9mm !important;
+  max-width: 215.9mm !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.pdf-mode #cetak-pihak-ketiga {
+  width: 355.6mm !important;
+  max-width: 355.6mm !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.pdf-mode .document-container {
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 10mm 20mm 15mm 20mm !important;
+  height: auto !important;
+  min-height: 355mm !important;
+  width: 215.9mm !important;
+  overflow: hidden !important;
+}
+
+body.pdf-mode .document-container-landscape {
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 10mm 15mm 15mm 15mm !important;
+  height: auto !important;
+  min-height: 215mm !important;
+  width: 355.6mm !important;
+  overflow: hidden !important;
+}
+
+body.pdf-mode .pdf-page-break {
+  page-break-before: always !important;
+}
+
+body.pdf-mode input::-webkit-calendar-picker-indicator,
+body.pdf-mode input::-webkit-list-button {
+  display: none !important;
+}
+
+body.pdf-mode input::placeholder,
+body.pdf-mode textarea::placeholder {
+  color: transparent !important;
+}
+
+body.pdf-mode .paper-input,
+body.pdf-mode .table-paper-input {
+  color: #000000 !important;
+  border-bottom: 1px dotted #000000 !important;
+}
+
+/* Color sanitization for html2pdf / html2canvas compatibility without oklch / oklab */
+body.pdf-mode *,
+body.pdf-mode *::before,
+body.pdf-mode *::after {
+  box-sizing: border-box;
+}
+
+body.pdf-mode table,
+body.pdf-mode th,
+body.pdf-mode td {
+  border-color: #000000 !important;
+}
+
+body.pdf-mode .bg-slate-100 {
+  background-color: #f1f5f9 !important;
+}
+body.pdf-mode .bg-slate-50 {
+  background-color: #f8fafc !important;
+}
+body.pdf-mode .bg-emerald-50 {
+  background-color: #ecfdf5 !important;
+}
+body.pdf-mode .bg-emerald-100 {
+  background-color: #d1fae5 !important;
+}
+body.pdf-mode .bg-emerald-600 {
+  background-color: #059669 !important;
+}
+body.pdf-mode .bg-emerald-700 {
+  background-color: #047857 !important;
+}
+body.pdf-mode .bg-amber-50 {
+  background-color: #fffbeb !important;
+}
+body.pdf-mode .bg-amber-100 {
+  background-color: #fef3c7 !important;
+}
+body.pdf-mode .text-slate-900 {
+  color: #0f172a !important;
+}
+body.pdf-mode .text-slate-800 {
+  color: #1e293b !important;
+}
+body.pdf-mode .text-slate-700 {
+  color: #334155 !important;
+}
+body.pdf-mode .text-slate-600 {
+  color: #475569 !important;
+}
+body.pdf-mode .text-slate-500 {
+  color: #64748b !important;
+}
+body.pdf-mode .text-slate-400 {
+  color: #94a3b8 !important;
+}
+body.pdf-mode .border-slate-100 {
+  border-color: #f1f5f9 !important;
+}
+body.pdf-mode .border-slate-200 {
+  border-color: #e2e8f0 !important;
+}
+body.pdf-mode .border-slate-300 {
+  border-color: #cbd5e1 !important;
+}
+body.pdf-mode .border-emerald-200 {
+  border-color: #a7f3d0 !important;
+}
+body.pdf-mode .border-emerald-300 {
+  border-color: #6ee7b7 !important;
+}
+body.pdf-mode .border-emerald-600 {
+  border-color: #059669 !important;
+}
+body.pdf-mode .text-emerald-800 {
+  color: #065f46 !important;
+}
+body.pdf-mode .text-emerald-900 {
+  color: #064e3b !important;
+}
+body.pdf-mode .text-emerald-950 {
+  color: #022c22 !important;
+}
+body.pdf-mode .text-emerald-700 {
+  color: #047857 !important;
+}
+body.pdf-mode .text-emerald-600 {
+  color: #059669 !important;
+}
+body.pdf-mode .text-red-700 {
+  color: #b91c1c !important;
+}
+body.pdf-mode .text-red-600 {
+  color: #dc2626 !important;
+}
+
+/* GSI Google Sign-In Material Button styles compliant with branding */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: WHITE;
+  background-image: none;
+  border: 1px solid #747775;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.25px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.gsi-material-button:hover {
+  background-color: #f8fafc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 20px;
+  min-width: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  font-weight: 500;
+}

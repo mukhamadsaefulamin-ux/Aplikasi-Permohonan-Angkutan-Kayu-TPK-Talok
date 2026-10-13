@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "Permohonan": {
+      "title": "Permohonan Angkutan Kayu",
+      "description": "Dokumen permohonan angkutan kayu dan SKSHHK TPK Talok",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "noSeri": { "type": "string" },
+        "tanggalAngkutan": { "type": "string" },
+        "namaPemohon": { "type": "string" },
+        "pekerjaanPemohon": { "type": "string" },
+        "alamatPemohon": { "type": "string" },
+        "jenisKendaraan": { "type": "string" },
+        "namaSupir": { "type": "string" },
+        "nopol": { "type": "string" },
+        "jenisKayu": { "type": "string" },
+        "items": { "type": "array" },
+        "totalBtg": { "type": "number" },
+        "totalM3": { "type": "number" },
+        "namaPenerima": { "type": "string" },
+        "alamatPenerima": { "type": "string" },
+        "namaTujuan": { "type": "string" },
+        "alamatTujuan": { "type": "string" },
+        "noDkhp": { "type": "string" },
+        "pejabatNama": { "type": "string" },
+        "pejabatReg": { "type": "string" },
+        "status": { "type": "string" },
+        "userId": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "namaPemohon", "jenisKayu", "updatedAt"]
+    },
+    "PersediaanItem": {
+      "title": "Persediaan Kayu Pihak Ketiga",
+      "description": "Data kapling persediaan kayu pihak ketiga TPK Talok",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "noKapling": { "type": "string" },
+        "noBlok": { "type": "string" },
+        "jenisKayu": { "type": "string" },
+        "sortimen": { "type": "string" },
+        "panjang": { "type": "string" },
+        "mutu": { "type": "string" },
+        "batang": { "type": "number" },
+        "volume": { "type": "number" },
+        "noInvoice": { "type": "string" },
+        "pembeli": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "noKapling", "jenisKayu"]
+    }
+  },
+  "firestore": {
+    "/permohonan/{permohonanId}": {
+      "schema": "Permohonan",
+      "description": "Koleksi dokumen permohonan angkutan kayu TPK Talok"
+    },
+    "/persediaan/{kaplingId}": {
+      "schema": "PersediaanItem",
+      "description": "Koleksi data persediaan kayu pihak ketiga"
+    }
+  }
+}
